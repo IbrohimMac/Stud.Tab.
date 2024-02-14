@@ -10,13 +10,15 @@ const btnUpdate = document.getElementById("btn-update");
 
 const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
-const Address = document.getElementById("Address");
+const date = document.getElementById("date");
+const address = document.getElementById("address");
 const group = document.getElementById("group");
 const doesWork = document.getElementById("doesWork");
 
 const firstNameEdit = document.getElementById("firstNameEdit");
 const lastNameEdit = document.getElementById("lastNameEdit");
-const AddressEdit = document.getElementById("AddressEdit");
+const dateEdit = document.getElementById("dateEdit");
+const addressEdit = document.getElementById("addressEdit");
 const groupEdit = document.getElementById("groupEdit");
 const doesWorkEdit = document.getElementById("doesWorkEdit");
 
@@ -28,7 +30,8 @@ function displayStudents(students) {
         <td>${student.id}</td>
         <td>${student.firstName}</td>
         <td>${student.lastName}</td>
-        <td>${student.Address}</td>
+        <td>${student.date}</td>
+        <td>${student.address}</td>
         <td>${student.group}</td>
         <td>${student.doesWork ? "Ha" : "Yo'q"}</td>
         <td>
@@ -54,8 +57,8 @@ btnAdd.addEventListener("click", function (e) {
     id: students.length + 1,
     firstName: firstName.value,
     lastName: lastName.value,
-    // address: Address.checked,
-    // address: address.value,
+    date: date.value,
+
     group: group.value,
     doesWork: doesWork.checked,
   };
@@ -80,7 +83,8 @@ function handleEdit(studentId) {
 
   firstNameEdit.value = studentEdit.firstName;
   lastNameEdit.value = studentEdit.lastName;
-  AddressEdit.value = studentEdit.Address;
+  dateEdit.value = studentEdit.date;
+  addressEdit.value = studentEdit.address;
   groupEdit.value = studentEdit.group;
   doesWorkEdit.checked = studentEdit.doesWork;
 }
@@ -92,7 +96,8 @@ btnUpdate.addEventListener("click", function (e) {
     id: studentId,
     firstName: firstNameEdit.value,
     lastName: lastNameEdit.value,
-    Address: AddressEdit.value,
+    date: dateEdit.value,
+    address: addressEdit.value,
     group: groupEdit.value,
     doesWork: doesWorkEdit.checked,
   };
@@ -112,7 +117,8 @@ search.addEventListener("input", function (e) {
     (student) =>
       student.firstName.toLowerCase().includes(text) ||
       student.lastName.toLowerCase().includes(text) ||
-      student.Address.toLowerCase().includes(text) ||
+      student.date.toLowerCase().includes(text) ||
+      student.address.toLowerCase().includes(text) ||
       student.group.toLowerCase().includes(text)
   );
   displayStudents(newStudents);
